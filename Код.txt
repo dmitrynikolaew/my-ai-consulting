@@ -1,0 +1,342 @@
+import React, { useState } from "react";
+
+// Single-file landing page for an AI implementation agency
+// Tech: React + TailwindCSS (no external UI libs required)
+// Notes: Replace contact details and links with your real ones.
+
+export default function AIAgencyLanding() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const features = [
+    {
+      title: "AI-чат-боты и помощники",
+      desc: "Автоматизируем ответы, квалификацию лидов и поддержку 24/7 в WhatsApp/Telegram/сайте.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M7 8h10M7 12h6M21 12c0 5-4 9-9 9a8.9 8.9 0 01-4-.95L3 21l.95-5A9 9 0 1112 3" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    },
+    {
+      title: "Аналитика и прогнозы",
+      desc: "Внедряем BI с предиктивной аналитикой: продажи, отток, ABC/XYZ, спрос.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M3 3v18h18M7 15l3-3 3 3 5-6" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    },
+    {
+      title: "Автоматизация процессов",
+      desc: "Интеграции с CRM/ERP, RPA, Zapier/Make. Снижаем ручной труд на 20–40%.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    },
+    {
+      title: "Генеративный контент",
+      desc: "Email/сценарии/описания товаров/обучающие материалы с контролем качества.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M12 6v12M6 12h12" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    }
+  ];
+
+  const steps = [
+    { n: 1, title: "Аудит и дорожная карта", desc: "1–2 недели. Интервью, метрики, выбор быстрых побед (quick wins)." },
+    { n: 2, title: "Пилот (PoC)", desc: "2–4 недели. Быстрый кейс: чат-бот, авто-отчетность или интеграция." },
+    { n: 3, title: "Внедрение", desc: "4–8 недель. Интеграция с CRM/ERP, обучение команды, документация." },
+    { n: 4, title: "Поддержка и рост", desc: "SLA, A/B тесты, развитие модели, измерение ROI ежемесячно." }
+  ];
+
+  const plans = [
+    {
+      name: "Старт",
+      price: "$990",
+      subtitle: "для малого бизнеса и тестов гипотез",
+      items: ["Аудит процессов (3 встречи)", "Дорожная карта на 3 месяца", "Пилотный бот/отчет", "Обучение 2х сотрудников"],
+      cta: "Заказать аудит"
+    },
+    {
+      name: "Рост",
+      popular: true,
+      price: "$2,900",
+      subtitle: "для системного внедрения",
+      items: ["Пилот + интеграция с CRM", "BI-дашборд и прогноз", "Автоматизация 2–3 процессов", "SLA 5/2 и обучение"] ,
+      cta: "Запросить внедрение"
+    },
+    {
+      name: "Энтерпрайз",
+      price: "Custom",
+      subtitle: "индивидуальная архитектура и безопасность",
+      items: ["Индивидуальная архитектура", "MLOps/он-прем", "Интеграции с ИБ-комплаенсом", "Расширенная поддержка 24/7"],
+      cta: "Обсудить проект"
+    }
+  ];
+
+  const faqs = [
+    {
+      q: "Нужно ли писать код?",
+      a: "Для большинства решений используем готовые сервисы (SaaS/API) и no-code/low-code. Код — только там, где это окупается."
+    },
+    {
+      q: "Как вы считаете ROI?",
+      a: "Согласуем метрики до старта: экономия времени, снижение ошибок, рост конверсии. Считаем эффект до/после и строим отчет в BI."
+    },
+    {
+      q: "С какими системами интегрируетесь?",
+      a: "CRM (Bitrix24, amoCRM, HubSpot), ERP (1C/УНФ/УТ, SAP), мессенджеры, почта, телефония, CMS, Google/Office365, платежи."
+    },
+    {
+      q: "Как обеспечиваете безопасность данных?",
+      a: "Шифрование в транзите/покое, минимизация PII, роль- и политик-ориентированный доступ, журналы действий, подписка NDA."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      {/* Nav */}
+      <header className="sticky top-0 z-40 backdrop-blur bg-slate-950/70 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500" />
+            <span className="font-semibold tracking-tight">aix4biz</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <button onClick={() => scrollTo('services')} className="hover:text-white/90">Решения</button>
+            <button onClick={() => scrollTo('process')} className="hover:text-white/90">Процесс</button>
+            <button onClick={() => scrollTo('cases')} className="hover:text-white/90">Кейсы</button>
+            <button onClick={() => scrollTo('pricing')} className="hover:text-white/90">Тарифы</button>
+            <button onClick={() => scrollTo('contact')} className="hover:text-white/90">Контакты</button>
+          </nav>
+          <div className="md:hidden">
+            <button aria-label="menu" onClick={() => setMenuOpen(v => !v)} className="p-2 rounded-xl bg-slate-800">
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+          </div>
+          <button onClick={() => scrollTo('contact')} className="hidden md:inline-flex px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 font-semibold shadow-lg shadow-violet-500/20">Получить аудит</button>
+        </div>
+        {menuOpen && (
+          <div className="md:hidden border-t border-slate-800 px-4 pb-3">
+            <div className="flex flex-col gap-3 pt-3 text-sm">
+              {['services','process','cases','pricing','contact'].map(id => (
+                <button key={id} onClick={() => { setMenuOpen(false); scrollTo(id); }} className="text-left py-2 border-b border-white/5">{({services:'Решения',process:'Процесс',cases:'Кейсы',pricing:'Тарифы',contact:'Контакты'})[id]}</button>
+              ))}
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-violet-600/30 blur-3xl rounded-full"/>
+          <div className="absolute -bottom-24 -right-24 w-[28rem] h-[28rem] bg-cyan-500/30 blur-3xl rounded-full"/>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full border border-white/10 mb-4">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"/> Готовые AI-решения за 2–4 недели
+            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+              Внедряем искусственный интеллект в бизнес <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-500">без боли</span>
+            </h1>
+            <p className="mt-4 text-slate-300 max-w-xl">Снижаем ручной труд на 20–40%, ускоряем продажи и отчётность. Пилот с измеримым эффектом за месяц.</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button onClick={() => scrollTo('contact')} className="px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 font-semibold">Запросить бесплатный аудит</button>
+              <button onClick={() => scrollTo('services')} className="px-5 py-3 rounded-2xl bg-slate-800">Смотреть решения</button>
+            </div>
+            <div className="mt-6 text-xs text-slate-400">Интеграции: Bitrix24, amoCRM, 1C, SAP, Telegram/WhatsApp, Google Workspace, Power BI, Zapier/Make</div>
+          </div>
+          <div className="md:pl-10">
+            <div className="relative bg-slate-900/60 border border-slate-800 rounded-3xl p-6 shadow-2xl">
+              <div className="text-sm text-slate-300 mb-3">Пример ROI:</div>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: 'Экономия времени', val: '−32%'} ,
+                  { label: 'Ошибки данных', val: '−45%'} ,
+                  { label: 'Скорость отклика', val: '×3'},
+                  { label: 'Конверсия в лид', val: '+18%'}
+                ].map((k)=> (
+                  <div key={k.label} className="rounded-2xl bg-slate-800/60 p-4 border border-white/5">
+                    <div className="text-xs text-slate-400">{k.label}</div>
+                    <div className="text-2xl font-bold mt-1">{k.val}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 text-xs text-slate-400">*Метрики по итогам типовых пилотов: бот поддержки + автоотчеты</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="max-w-7xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-extrabold tracking-tight">Готовые решения</h2>
+        <p className="text-slate-300 mt-2 max-w-2xl">Собираем из проверенных AI-сервисов и подключаем к вашим системам. Быстрый запуск, измеримый результат.</p>
+        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {features.map((f) => (
+            <div key={f.title} className="rounded-3xl p-5 bg-slate-900/60 border border-slate-800 hover:border-violet-600/40 transition">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-violet-300 mb-3">{f.icon}</div>
+              <div className="font-semibold">{f.title}</div>
+              <div className="text-sm text-slate-300 mt-1">{f.desc}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 text-sm text-slate-400">Технологии: OpenAI, Azure/OpenAI, Google Vertex AI, YandexGPT, LangChain, RPA, Power BI, Zapier/Make</div>
+      </section>
+
+      {/* Process */}
+      <section id="process" className="max-w-7xl mx-auto px-4 py-16 border-t border-slate-800">
+        <h2 className="text-3xl font-extrabold tracking-tight">Как мы работаем</h2>
+        <div className="mt-8 grid md:grid-cols-4 gap-5">
+          {steps.map((s) => (
+            <div key={s.n} className="rounded-3xl p-5 bg-slate-900/60 border border-slate-800">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500 text-slate-950 font-bold flex items-center justify-center">{s.n}</div>
+              <div className="mt-3 font-semibold">{s.title}</div>
+              <div className="text-sm text-slate-300 mt-1">{s.desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Cases */}
+      <section id="cases" className="max-w-7xl mx-auto px-4 py-16 border-t border-slate-800">
+        <h2 className="text-3xl font-extrabold tracking-tight">Кейсы и результаты</h2>
+        <div className="mt-8 grid md:grid-cols-3 gap-5">
+          {[
+            {
+              name: "E‑commerce",
+              res: "+18% к конверсии",
+              text: "AI-чат-бот + персональные рекомендации товаров. Интеграция с amoCRM и каталогом."
+            },
+            {
+              name: "Сервисная компания",
+              res: "−35% ручного труда",
+              text: "RPA + авторазбор заявок и маршрутизация. BI-дашборд для руководителя."
+            },
+            {
+              name: "Онлайн-школа",
+              res: "×2 скорость контента",
+              text: "Генеративные сценарии, субтитры, авто‑монтаж. Подключение платежей и рассылок."
+            }
+          ].map((c) => (
+            <div key={c.name} className="rounded-3xl p-5 bg-slate-900/60 border border-slate-800">
+              <div className="text-sm text-violet-300">{c.name}</div>
+              <div className="text-xl font-bold mt-1">{c.res}</div>
+              <div className="text-sm text-slate-300 mt-2">{c.text}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="max-w-7xl mx-auto px-4 py-16 border-t border-slate-800">
+        <h2 className="text-3xl font-extrabold tracking-tight">Тарифы</h2>
+        <div className="mt-8 grid md:grid-cols-3 gap-6">
+          {plans.map((p) => (
+            <div key={p.name} className={`rounded-3xl p-6 border ${p.popular ? 'border-violet-500/60 bg-violet-500/5' : 'border-slate-800 bg-slate-900/60'}`}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-sm text-slate-300">{p.subtitle}</div>
+                  <div className="text-2xl font-bold mt-1">{p.name}</div>
+                </div>
+                {p.popular && <span className="text-xs px-2 py-1 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 font-semibold">топ‑выбор</span>}
+              </div>
+              <div className="mt-4 text-4xl font-extrabold">{p.price}</div>
+              <ul className="mt-4 space-y-2 text-sm text-slate-300 list-disc list-inside">
+                {p.items.map(it => <li key={it}>{it}</li>)}
+              </ul>
+              <button onClick={() => scrollTo('contact')} className="mt-6 w-full px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 font-semibold">{p.cta}</button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA strip */}
+      <section className="relative border-t border-slate-800">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-cyan-500/20"/>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center justify-between gap-4">
+          <h3 className="text-2xl font-bold">Готовы к пилоту? Подарим аудит и план внедрения.</h3>
+          <button onClick={() => scrollTo('contact')} className="px-6 py-3 rounded-2xl bg-slate-900 border border-white/10">Получить аудит</button>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-3xl font-extrabold tracking-tight">Свяжитесь с нами</h2>
+            <p className="text-slate-300 mt-2 max-w-xl">Опишите задачу — в течение 24 часов пришлём гипотезы, бюджет и сроки. Или напишите в Telegram: <span className="text-sky-400">@yourhandle</span></p>
+            <div className="mt-6 space-y-3 text-sm text-slate-300">
+              <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400"/> Работаем по договору и NDA</div>
+              <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400"/> Отчётность и обучение команды</div>
+              <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400"/> Поддержка и SLA</div>
+            </div>
+          </div>
+          <form onSubmit={(e)=>{e.preventDefault(); alert('Спасибо! Мы свяжемся с вами. (Замените alert на интеграцию формы)');}} className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6">
+            <div className="grid grid-cols-1 gap-4">
+              <div>
+                <label className="text-sm text-slate-300">Имя</label>
+                <input required className="mt-1 w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 focus:outline-none focus:ring-2 focus:ring-violet-500" placeholder="Иван" />
+              </div>
+              <div>
+                <label className="text-sm text-slate-300">Email</label>
+                <input type="email" required className="mt-1 w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 focus:outline-none focus:ring-2 focus:ring-violet-500" placeholder="you@company.com" />
+              </div>
+              <div>
+                <label className="text-sm text-slate-300">Компания</label>
+                <input className="mt-1 w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 focus:outline-none focus:ring-2 focus:ring-violet-500" placeholder="ООО «Пример»" />
+              </div>
+              <div>
+                <label className="text-sm text-slate-300">Что хотите автоматизировать?</label>
+                <textarea rows={4} className="mt-1 w-full px-3 py-2 rounded-xl bg-slate-950 border border-white/10 focus:outline-none focus:ring-2 focus:ring-violet-500" placeholder="Опишите текущий процесс и желаемый результат" />
+              </div>
+              <button className="mt-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 font-semibold">Отправить</button>
+              <div className="text-xs text-slate-400">Нажимая «Отправить», вы соглашаетесь с политикой обработки данных.</div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="max-w-7xl mx-auto px-4 py-16 border-t border-slate-800">
+        <h2 className="text-3xl font-extrabold tracking-tight">FAQ</h2>
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          {faqs.map((f)=> (
+            <div key={f.q} className="rounded-3xl p-6 bg-slate-900/60 border border-slate-800">
+              <div className="font-semibold">{f.q}</div>
+              <div className="text-sm text-slate-300 mt-2">{f.a}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 py-10 text-sm text-slate-400 flex flex-col md:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-7 h-7 rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500" />
+            <span>aix4biz</span>
+          </div>
+          <div className="opacity-80">© {new Date().getFullYear()} — AI-консалтинг для SMB</div>
+          <div className="flex items-center gap-4">
+            <a href="#" className="hover:text-slate-200">Политика конфиденциальности</a>
+            <a href="#" className="hover:text-slate-200">Договор оферты</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
